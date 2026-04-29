@@ -2,7 +2,7 @@
 
 This project implements a robust, weakly supervised machine learning pipeline for the classification of Glioma subtypes (Glioblastoma, Astrocytoma, and Oligodendroglioma) using Whole Slide Images (WSIs). It features two distinct foundation model architectures: **CHIEF** and **IPD-Brain**, both utilizing the **DTFD-MIL** (Double-Tier Feature Distillation Multiple Instance Learning) aggregator for final WSI-level classification.
 
-## 🌟 Overview
+## Overview
 The pipeline transforms high-resolution gigapixel slides into diagnostic predictions through a systematic four-step process:
 1.  **Patch Extraction:** Segmenting the tissue and tiling the WSI into smaller patches.
 2.  **Feature Extraction:** Encoding patches into low-dimensional embeddings using foundation models.
@@ -11,7 +11,7 @@ The pipeline transforms high-resolution gigapixel slides into diagnostic predict
 
 ---
 
-## 🏗️ Pipelines Implemented
+## Pipelines Implemented
 
 ### 1. CHIEF Pipeline
 Based on the **Clinical Histopathology Imaging Evaluation Foundation (CHIEF)** model. It uses a transformer-based encoder (CTransPath) to extract highly generalizable pathology representations.
@@ -25,7 +25,7 @@ A specialized pipeline optimized for brain pathology, utilizing a **ResNet-50** 
 
 ---
 
-## 📥 Step 0: Data Downloading
+## Step 0: Data Downloading
 You can download the necessary Glioma slides from the [GDC Portal](https://portal.gdc.cancer.gov/) using the provided manifest files.
 
 ```bash
@@ -38,7 +38,7 @@ gdc-client download -m gdc-manifest-set2.txt
 
 ---
 
-## 🔪 Step 1: Patch Extraction
+## Step 1: Patch Extraction
 Segment tissue and create patches for both pipelines.
 
 ### Execution
@@ -58,7 +58,7 @@ python create_patches_fp.py \
 
 ---
 
-## 🧬 Step 2: Feature Extraction
+## Step 2: Feature Extraction
 Convert patches into numerical feature vectors.
 
 ### IPD-Brain (ResNet-50 Features)
@@ -77,7 +77,7 @@ python CHIEF/Get_CHIEF_patch_feature.py
 
 ---
 
-## 🚂 Step 3: DTFD Aggregator Training
+## Step 3: DTFD Aggregator Training
 Train the Multiple Instance Learning (MIL) model using the extracted features.
 
 ### For IPD-Brain
@@ -92,14 +92,15 @@ python IPD-Brain/Main_DTFD_MIL.py \
 
 ### For CHIEF
 ```bash
-# Or run the provided bash script for optimized parameters
-bash CHIEF/train_v6_final.sh
+python train_dtfd.py \
+    --data_dir ../processed_pilot/features \
+    --dataset_csv ../slides_labels_final.csv \
+    --feature_dim 768 \
+    --num_classes 3 \
+    
 ```
-*The `train_v6_final.sh` script includes optimized hyperparameters: Learning Rate (5e-5), Dropout (0.3), and Weight Decay (0.001).*
 
----
-
-## 📊 Step 4: Inference & Evaluation
+## Step 4: Inference & Evaluation
 
 ### Running Inference
 To run inference on new slides using the trained IPD-Brain model:
@@ -120,7 +121,7 @@ This will output the **Confusion Matrix** and a detailed **Classification Report
 
 ---
 
-## 🗺️ Interactive Heatmap Viewer
+## Interactive Heatmap Viewer
 The interactive viewer allows you to visualize the Regions of Interest (ROI) that the model focused on to make its prediction. It highlights the most "important" patches based on the attention weights from the MIL model.
 
 ### Key Features
@@ -145,7 +146,7 @@ This script will:
 
 ---
 
-## 🛠️ Project Structure
+## Project Structure
 ```text
 .
 ├── CHIEF/                      # CHIEF Pipeline scripts
@@ -161,7 +162,7 @@ This script will:
 └── requirements.txt            # Project dependencies
 ```
 
-## 📜 Requirements
+## Requirements
 Install all dependencies via pip:
 ```bash
 pip install -r requirements.txt
