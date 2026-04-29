@@ -21,7 +21,7 @@ Based on the **Clinical Histopathology Imaging Evaluation Foundation (CHIEF)** m
 ### 2. IPD-Brain Pipeline
 A specialized pipeline optimized for brain pathology, utilizing a **ResNet-50** backbone pretrained with specialized clinical datasets.
 *   **Feature Dimension:** 2048
-*   **Foundation Model:** ResNet-50 (Custom clinical weights)
+*   **Foundation Model:** ResNet-50 (Barlow Twin)
 
 ---
 
