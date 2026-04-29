@@ -156,12 +156,15 @@ This script will:
 │   ├── Main_DTFD_MIL.py        # DTFD Training
 │   ├── Get_CHIEF_patch_feature.py # Feature extraction
 │   └── confusion.py            # Evaluation
+│   └── ............
 ├── IPD-Brain/                  # IPD-Brain Pipeline scripts
 │   ├── Main_DTFD_MIL.py        # DTFD Training
 │   ├── extract_features.py     # Feature extraction
 │   └── confusion.py            # Evaluation
+│   └── ...........
 ├── launch_viewer.py            # Heatmap viewer entry point
 ├── slides_labels_final.csv     # Master label file
+└── interactive_heatmap_viewer.py  # Project dependencies
 └── requirements.txt            # Project dependencies
 ```
 
