@@ -46,8 +46,8 @@ Run the following command within the respective pipeline folder (`CHIEF/` or `IP
 
 ```bash
 python create_patches_fp.py \
-    --source /path/to/glioma_slides \
-    --save_dir ../processed_data/patches \
+    --source path/to/glioma_slides \
+    --save_dir ../processed_pilot/patches \
     --patch_size 224 \
     --preset ipd_preset.csv \
     --seg --patch --stitch
@@ -72,7 +72,7 @@ python IPD-Brain/extract_features.py
 ```bash
 python CHIEF/Get_CHIEF_patch_feature.py
 ```
-*   **Input:** Patches from `../processed_chief/patches`
+*   **Input:** Patches from `../processed_pilot/patches`
 *   **Output:** Saved as `.pt` files in `../processed_chief/features/pt_files`
 
 ---
