@@ -55,6 +55,9 @@ python create_patches_fp.py \
 *   **CHIEF location:** `CHIEF/create_patches_fp.py`
 *   **IPD location:** `IPD-Brain/create_patches_fp.py`
 *   **Output:** Generates `.h5` files containing patch coordinates and `.png` masks/stitches.
+*   
+<img width="2250" height="2746" alt="image" src="https://github.com/user-attachments/assets/d0cd9f3e-9eee-4216-9d4f-1862bbb9f21a" />
+
 
 ---
 
@@ -140,9 +143,9 @@ This script will:
 2. Install/Verify `streamlit`.
 3. Launch the web-based interactive viewer (`interactive_heatmap_viewer.py`) at `http://localhost:8501`.
 
-### Visualization Example
-![ROI Heatmap Example](images/heatmap_example.png)
-*The heatmap indicates the possible ROI of the inference, providing explainability for the diagnostic decision.*
+<img width="1600" height="1121" alt="WhatsApp Image 2026-04-29 at 7 27 07 PM" src="https://github.com/user-attachments/assets/9837305a-b158-46da-8296-5da198c95c33" />
+
+
 
 ---
 
